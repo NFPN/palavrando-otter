@@ -1,13 +1,14 @@
 ﻿using Palavrando;
 
-namespace palavrando_otter
+namespace Palavrando
 {
-    class Program
+    public static class Program
     {
+        static public GameManager Manager { get; set; }
         private static void Main(string[] args)
         {
-            var manager = new GameManager();
-            manager.StartGame();
+            Manager = new GameManager();
+            Manager.StartGame();
         }
     }
 }

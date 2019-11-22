@@ -1,5 +1,6 @@
 ﻿using Otter;
 using Palavrando.Extensions;
+using Palavrando;
 
 namespace Palavrando.Entities
 {
