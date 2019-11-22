@@ -1,13 +1,14 @@
 ﻿using Otter;
 using Palavrando.Extensions;
 using Palavrando;
+using Palavrando.Interfaces;
 
 namespace Palavrando.Entities
 {
     public class Player : Entity
     {
+        private IMoveSystem MoveSystem { get; set; }
         private Sound ItemPickupSFX { get; set; }
-
         public int MoveSpeed { get; private set; } = 5;
         public Vector2 PlayerSize { get; private set; } = new Vector2(25, 25);
 
@@ -32,6 +33,8 @@ namespace Palavrando.Entities
 
         public override void Update()
         {
+            MoveSystem.Move(this);
+
             if (Input.KeyDown(Key.W) && !Input.KeyDown(Key.S)) //Inverse Y value
                 Y -= MoveSpeed;
             if (Input.KeyDown(Key.S) && !Input.KeyDown(Key.W))
