@@ -63,7 +63,7 @@
     <Compile Include="Entities\PickupItem.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Extensions\GameExtensions.cs" />
-    <Compile Include="Interfaces\AbstractBase\MoveSystem.cs" />
+    <Compile Include="Systems\MoveSystem.cs" />
     <Compile Include="Interfaces\IMoveSystem.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\PickupItemSpawnManager.cs" />
@@ -72,13 +72,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RealDatabaseService.cs" />
     <Compile Include="Utilities\CustomScene.cs" />
-    <Compile Include="Utilities\Global.cs" />
+    <Compile Include="Utilities\MyGlobal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Otter\Otter.csproj">
       <Project>{236485c2-a7ba-4dcd-808a-b3a634764402}</Project>

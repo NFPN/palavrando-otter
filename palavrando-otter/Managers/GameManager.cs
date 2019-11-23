@@ -1,6 +1,7 @@
 ﻿using Otter;
 using Palavrando.Entities;
 using Palavrando.Managers;
+using Palavrando.Systems;
 using Palavrando.Utils;
 using System.Collections.Generic;
 
@@ -17,22 +18,24 @@ namespace Palavrando
 
         public GameManager()
         {
-            MainGame = new Game("The Collector", Global.WINDOWWIDTH, Global.WINDOWHEIGHT);
+            MainGame = new Game("The Collector", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
             UImanager = new UIManager(MainGame);
             SpawnManager = new PickupItemSpawnManager(MainGame);
             GameScenes = new Dictionary<string, Scene>()
             {
-                { "Game",new CustomScene("BGM.wav") },
+                { "Game", SetupGameScene() },
+                { "Word", SetupWordScene() },
             };
-
-            foreach (var sceneItem in GameScenes)
-                MainGame.AddScene(sceneItem.Value);
 
             //Setup Scenes
             SetupGameScene();
         }
 
-        public void StartGame() => MainGame.Start();
+        public void StartGame()
+        {
+            GameScenes.TryGetValue("Game", out Scene scene);
+            MainGame.Start(scene);
+        }
 
         public void AddScore(int value)
         {
@@ -40,10 +43,10 @@ namespace Palavrando
             UImanager.ChangeScoreText(Score.ToString());
         }
 
-        private void SetupGameScene()
+        private Scene SetupGameScene()
         {
-            GameScenes.TryGetValue("Game", out Scene scene);
-            var player = new Player(MainGame, name: "Collector");
+            var scene = new CustomScene(/*BGM.wav*/);
+            var player = new Player(MainGame, new MoveSystem(), name: "Collector");
 
             //Add scene Graphics
             scene.AddGraphic(UImanager.GameScore);
@@ -52,6 +55,15 @@ namespace Palavrando
             scene.Add(player);
             foreach (var pickupItem in SpawnManager.PickupItems)
                 scene.Add(pickupItem);
+
+            return scene;
+        }
+
+        public Scene SetupWordScene()
+        {
+            var scene = new CustomScene(/*BGM.wav*/);
+            scene.AddGraphic(Image.CreateRectangle(Game.Instance.Width, Game.Instance.Height, Color.Blue));
+            return scene;
         }
     }
 }

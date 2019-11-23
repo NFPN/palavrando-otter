@@ -7,7 +7,7 @@ namespace Palavrando.Utils
         public Music SceneBGM { get; private set; }
         public Game SceneGame { get; private set; }
 
-        public CustomScene(string bgmFilePath = null,Game game = null, int width = Global.WINDOWWIDTH, int height = Global.WINDOWHEIGHT)
+        public CustomScene(string bgmFilePath = null,Game game = null, int width = MyGlobal.WINDOWWIDTH, int height = MyGlobal.WINDOWHEIGHT)
             : base(width, height)
         {
             SceneGame = game;
