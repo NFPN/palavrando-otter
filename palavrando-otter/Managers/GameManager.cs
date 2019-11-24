@@ -3,7 +3,7 @@ using Palavrando.Entities;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utils;
-using palavrando_otter.Utilities;
+using Palavrando.Utilities;
 using System.Collections.Generic;
 
 namespace Palavrando

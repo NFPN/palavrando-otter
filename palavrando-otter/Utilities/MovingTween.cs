@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace palavrando_otter.Utilities
+namespace Palavrando.Utilities
 {
     public class MovingTween : Entity
     {
@@ -37,7 +37,7 @@ namespace palavrando_otter.Utilities
             Y = nextY;
 
             // Tween the Entity across the screen and back for 180 frames.
-            Tween(this, new { Y = Game.Instance.HalfHeight - 40 }, 180)
+            Tween(this, new { Y = Game.Instance.Height - 40 }, 180)
               .Ease(easeType)
               .Reflect()
               .RepeatDelay(30)

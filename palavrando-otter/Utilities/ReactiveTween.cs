@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace palavrando_otter.Utilities
+namespace Palavrando.Utilities
 {
     public class ReactiveTween : Entity
     {
