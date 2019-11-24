@@ -2,6 +2,7 @@
 using Palavrando.Entities;
 using Palavrando.Managers;
 using Palavrando.Systems;
+using Palavrando.Utilities;
 using Palavrando.Utils;
 using Palavrando.Utilities;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ namespace Palavrando
         {
             MainGame = new Game("The Collector", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
             UImanager = new UIManager(MainGame);
-            SpawnManager = new PickupItemSpawnManager(MainGame);
+            SpawnManager = new PickupItemSpawnManager();
             GameScenes = new Dictionary<string, Scene>()
             {
-                { "Game", SetupGameScene() },
                 { "Word", SetupWordScene() },
+                { "Game", SetupGameScene() },
             };
 
             //Setup Scenes
@@ -46,7 +47,7 @@ namespace Palavrando
 
         private Scene SetupGameScene()
         {
-            var scene = new CustomScene(/*BGM.wav*/);
+            var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), name: "Collector");
 
             //Add scene Graphics
@@ -68,8 +69,8 @@ namespace Palavrando
 
         public Scene SetupWordScene()
         {
-            var scene = new CustomScene(/*BGM.wav*/);
-            scene.AddGraphic(Image.CreateRectangle(Game.Instance.Width, Game.Instance.Height, Color.Blue));
+            var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
+            scene.AddGraphic(Image.CreateRectangle(Game.Instance.Width, Game.Instance.Height, Color.Grey));
             return scene;
         }
     }

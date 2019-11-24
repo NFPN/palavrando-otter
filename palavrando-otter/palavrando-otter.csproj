@@ -63,6 +63,7 @@
     <Compile Include="Entities\PickupItem.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Extensions\GameExtensions.cs" />
+    <Compile Include="Interfaces\ISwitchScene.cs" />
     <Compile Include="Systems\MoveSystem.cs" />
     <Compile Include="Interfaces\IMoveSystem.cs" />
     <Compile Include="Managers\GameManager.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Utilities\MyGlobal.cs" />
     <Compile Include="Utilities\ReactiveTween.cs" />
     <Compile Include="Utilities\ScalingTween.cs" />
+    <Compile Include="Utilities\SceneSwitcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
