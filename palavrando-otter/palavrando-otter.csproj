@@ -71,8 +71,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RealDatabaseService.cs" />
+    <Compile Include="Utilities\ColorTween.cs" />
     <Compile Include="Utilities\CustomScene.cs" />
+    <Compile Include="Utilities\MovingTween.cs" />
     <Compile Include="Utilities\MyGlobal.cs" />
+    <Compile Include="Utilities\ReactiveTween.cs" />
+    <Compile Include="Utilities\ScalingTween.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -85,31 +89,34 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\%28Editar%29GatoDeBotasFim.jpg" />
-    <Content Include="Images\bg-room.png" />
-    <Content Include="Images\bg-room2.png" />
-    <Content Include="Images\BotasProcurar.jpg" />
-    <Content Include="Images\BotasProcurar2.jpg" />
-    <Content Include="Images\BotasProcurar3.jpg" />
-    <Content Include="Images\BotasProcurar4.jpg" />
-    <Content Include="Images\BotasProcurar5.jpg" />
-    <Content Include="Images\ChapeuProcurar1.jpg" />
-    <Content Include="Images\ChapeuProcurar2.jpg" />
-    <Content Include="Images\ChapeuProcurar3.jpg" />
-    <Content Include="Images\ChapeuProcurar4.jpg" />
-    <Content Include="Images\ChapeuProcurar5.jpg" />
-    <Content Include="Images\FloreteProcurar.jpg" />
-    <Content Include="Images\FloreteProcurar2.jpg" />
-    <Content Include="Images\FloreteProcurar3.jpg" />
-    <Content Include="Images\FloreteProcurar4.jpg" />
-    <Content Include="Images\FloreteProcurar5.png" />
-    <Content Include="Images\GatoDeBotasProcurar1.jpg" />
-    <Content Include="Images\GatoDeBotasProcurar2.jpg" />
-    <Content Include="Images\GatoDeBotasProcurar3.jpg" />
-    <Content Include="Images\GatoDeBotasProcurar4.jpg" />
-    <Content Include="Images\GatoDeBotasProcurar5.jpg" />
-    <Content Include="Images\niiif.png" />
-    <Content Include="Images\sprite.png" />
+    <Content Include="Images\imgObjetoPalavra\%28Editar%29GatoDeBotasFim.jpg" />
+    <Content Include="Images\imgObjetoPalavra\bg-room.png" />
+    <Content Include="Images\imgObjetoPalavra\bg-room2.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar.jpg" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar2.jpg" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar3.jpg" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar4.jpg" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar5.jpg" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar1.jpg" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar2.jpg" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar3.jpg" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar4.jpg" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar5.jpg" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar.jpg" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar2.jpg" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar3.jpg" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar4.jpg" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar5.png" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar1.jpg" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar2.jpg" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar3.jpg" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar4.jpg" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar5.jpg" />
+    <Content Include="Images\PlayerMasc.png" />
+    <Content Include="Images\PlayerFem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\imgPalavra\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

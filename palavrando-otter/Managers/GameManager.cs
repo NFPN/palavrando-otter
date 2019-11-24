@@ -3,6 +3,7 @@ using Palavrando.Entities;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utils;
+using palavrando_otter.Utilities;
 using System.Collections.Generic;
 
 namespace Palavrando
@@ -50,6 +51,12 @@ namespace Palavrando
 
             //Add scene Graphics
             scene.AddGraphic(UImanager.GameScore);
+
+            //Move the Text word to a player in Vertical
+            scene.Add(new MovingTween(Ease.CircOut));
+
+            // Add an Entity that tweens in response to a key press.
+            scene.Add(new ReactiveTween(540, 400));
 
             //Add scene Entities
             scene.Add(player);
