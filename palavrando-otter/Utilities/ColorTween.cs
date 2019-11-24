@@ -1,16 +1,11 @@
 ﻿using Otter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Palavrando.Utilities
 {
     public class ColorTween : Entity
     {
         // Tween this value to determine the color later.
-        float hue;
+        private float hue;
 
         public ColorTween(float x, float y) : base(x, y)
         {

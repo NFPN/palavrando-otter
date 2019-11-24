@@ -1,20 +1,18 @@
 ﻿using Otter;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Palavrando.Utilities
 {
     public class MovingTween : Entity
     {
         // The next Y position to place the Entity at.
-        static float nextY;
+        private static float nextY;
+
         // How far each MovingTween Entity should be spaced from each other vertically.
-        static float spacing = 10;
+        private static float spacing = 10;
+
         // The next hue value to color the Graphic with.
-        static float nextHue = 40;
+        private static float nextHue = 40;
 
         public MovingTween(Func<float, float> easeType)
         {
@@ -45,4 +43,3 @@ namespace Palavrando.Utilities
         }
     }
 }
-

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PalavrandoSetup.Services
 {
-    class RealDatabaseService
+    internal class RealDatabaseService
     {
         private FirebaseClient FbaseClient { get; set; }
 
@@ -36,24 +36,21 @@ namespace PalavrandoSetup.Services
             var register = await FbaseClient
                 .Child("PlayerData")
                 .PostAsync(player.Score);
-
         }
 
         public async Task PUT()
         {
-             await FbaseClient
-                .Child("PlayerData")
-                .Child("Score")
-                .PutAsync(new PlayerData());
+            await FbaseClient
+               .Child("PlayerData")
+               .Child("Score")
+               .PutAsync(new PlayerData());
         }
 
         public async Task DELETE()
         {
-           await FbaseClient
-                 .Child("PlayerData")
-                 .DeleteAsync();
+            await FbaseClient
+                  .Child("PlayerData")
+                  .DeleteAsync();
         }
-
-
     }
 }

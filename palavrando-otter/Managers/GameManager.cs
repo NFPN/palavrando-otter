@@ -1,9 +1,8 @@
 ﻿using Otter;
 using Palavrando.Entities;
+using Palavrando.Extensions;
 using Palavrando.Managers;
 using Palavrando.Systems;
-using Palavrando.Utilities;
-using Palavrando.Utils;
 using Palavrando.Utilities;
 using System.Collections.Generic;
 
@@ -17,6 +16,7 @@ namespace Palavrando
         public UIManager UImanager { get; private set; }
         public PickupItemSpawnManager SpawnManager { get; private set; }
         public Dictionary<string, Scene> GameScenes { get; private set; }
+        public List<Image> GameObjectList { get; private set; }
 
         public GameManager()
         {
@@ -28,6 +28,9 @@ namespace Palavrando
                 { "Word", SetupWordScene() },
                 { "Game", SetupGameScene() },
             };
+
+            //TODO: make pikupitems from spawnmanager get a random image based on word folder
+            GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
 
             //Setup Scenes
             SetupGameScene();
