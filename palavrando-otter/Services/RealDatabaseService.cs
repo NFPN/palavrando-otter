@@ -11,18 +11,18 @@ namespace PalavrandoSetup.Services
 
         public RealDatabaseService()
         {
-            FbaseClient = new FirebaseClient("https://senacbaset5.firebaseio.com/");
+            FbaseClient = new FirebaseClient("https://palavrando-otte2d.firebaseio.com/");
         }
 
-        public async Task<ScoreData> GET()
+        public async Task<PlayerInstance> GET()
         {
             var register = await FbaseClient
                 .Child("Score")
                 .OrderByKey()
                 .StartAt("search")
-                .OnceAsync<ScoreData>();
+                .OnceAsync<PlayerInstance>();
 
-            return (register as ScoreData);
+            return (register as PlayerInstance);
         }
 
         public async Task Post(PlayerData player)

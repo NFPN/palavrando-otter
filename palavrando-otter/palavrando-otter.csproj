@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\PlayerData.cs" />
-    <Compile Include="Data\ScoreData.cs" />
+    <Compile Include="Data\PlayerInstance .cs" />
     <Compile Include="Entities\PickupItem.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Extensions\GameExtensions.cs" />
@@ -83,6 +83,31 @@
       <Project>{236485c2-a7ba-4dcd-808a-b3a634764402}</Project>
       <Name>Otter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\%28Editar%29GatoDeBotasFim.jpg" />
+    <Content Include="Images\bg-room.png" />
+    <Content Include="Images\bg-room2.png" />
+    <Content Include="Images\BotasProcurar.jpg" />
+    <Content Include="Images\BotasProcurar2.jpg" />
+    <Content Include="Images\BotasProcurar3.jpg" />
+    <Content Include="Images\BotasProcurar4.jpg" />
+    <Content Include="Images\BotasProcurar5.jpg" />
+    <Content Include="Images\ChapeuProcurar1.jpg" />
+    <Content Include="Images\ChapeuProcurar2.jpg" />
+    <Content Include="Images\ChapeuProcurar3.jpg" />
+    <Content Include="Images\ChapeuProcurar4.jpg" />
+    <Content Include="Images\ChapeuProcurar5.jpg" />
+    <Content Include="Images\FloreteProcurar.jpg" />
+    <Content Include="Images\FloreteProcurar2.jpg" />
+    <Content Include="Images\FloreteProcurar3.jpg" />
+    <Content Include="Images\FloreteProcurar4.jpg" />
+    <Content Include="Images\FloreteProcurar5.png" />
+    <Content Include="Images\GatoDeBotasProcurar1.jpg" />
+    <Content Include="Images\GatoDeBotasProcurar2.jpg" />
+    <Content Include="Images\GatoDeBotasProcurar3.jpg" />
+    <Content Include="Images\GatoDeBotasProcurar4.jpg" />
+    <Content Include="Images\GatoDeBotasProcurar5.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
