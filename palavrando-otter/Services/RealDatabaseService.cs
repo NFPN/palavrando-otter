@@ -1,6 +1,7 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
 using PalavrandoSetup.Data;
+using System;
 using System.Threading.Tasks;
 
 namespace PalavrandoSetup.Services
@@ -17,10 +18,15 @@ namespace PalavrandoSetup.Services
         public async Task<PlayerInstance> GET()
         {
             var register = await FbaseClient
-                .Child("Score")
+                .Child("PlayerData")
                 .OrderByKey()
                 .StartAt("search")
                 .OnceAsync<PlayerInstance>();
+
+            foreach (var line in register)
+            {
+                Console.WriteLine($"{line.Key} is {line.Object}");
+            }
 
             return (register as PlayerInstance);
         }
@@ -28,8 +34,26 @@ namespace PalavrandoSetup.Services
         public async Task Post(PlayerData player)
         {
             var register = await FbaseClient
-                .Child("Placar")
+                .Child("PlayerData")
                 .PostAsync(player.Score);
+
         }
+
+        public async Task PUT()
+        {
+             await FbaseClient
+                .Child("PlayerData")
+                .Child("Score")
+                .PutAsync(new PlayerData());
+        }
+
+        public async Task DELETE()
+        {
+           await FbaseClient
+                 .Child("PlayerData")
+                 .DeleteAsync();
+        }
+
+
     }
 }

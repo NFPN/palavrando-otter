@@ -108,6 +108,8 @@
     <Content Include="Images\GatoDeBotasProcurar3.jpg" />
     <Content Include="Images\GatoDeBotasProcurar4.jpg" />
     <Content Include="Images\GatoDeBotasProcurar5.jpg" />
+    <Content Include="Images\niiif.png" />
+    <Content Include="Images\sprite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
