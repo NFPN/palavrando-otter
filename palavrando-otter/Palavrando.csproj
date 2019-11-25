@@ -62,6 +62,7 @@
     <Compile Include="Data\PlayerInstance .cs" />
     <Compile Include="Entities\PickupItem.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\PlayerAnimation.cs" />
     <Compile Include="Extensions\GameExtensions.cs" />
     <Compile Include="Interfaces\ISwitchScene.cs" />
     <Compile Include="Systems\MoveSystem.cs" />
@@ -91,29 +92,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\imgObjetoPalavra\%28Editar%29GatoDeBotasFim.jpg" />
-    <Content Include="Images\imgObjetoPalavra\bg-room.png" />
-    <Content Include="Images\imgObjetoPalavra\bg-room2.png" />
-    <Content Include="Images\imgObjetoPalavra\BotasProcurar.jpg" />
-    <Content Include="Images\imgObjetoPalavra\BotasProcurar2.jpg" />
-    <Content Include="Images\imgObjetoPalavra\BotasProcurar3.jpg" />
-    <Content Include="Images\imgObjetoPalavra\BotasProcurar4.jpg" />
-    <Content Include="Images\imgObjetoPalavra\BotasProcurar5.jpg" />
-    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar1.jpg" />
-    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar2.jpg" />
-    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar3.jpg" />
-    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar4.jpg" />
-    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar5.jpg" />
-    <Content Include="Images\imgObjetoPalavra\FloreteProcurar.jpg" />
-    <Content Include="Images\imgObjetoPalavra\FloreteProcurar2.jpg" />
-    <Content Include="Images\imgObjetoPalavra\FloreteProcurar3.jpg" />
-    <Content Include="Images\imgObjetoPalavra\FloreteProcurar4.jpg" />
+    <Content Include="Images\bg-room.png" />
+    <Content Include="Images\bg-room2.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar2.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar3.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar4.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurar5.png" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar1.png" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar2.png" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar3.png" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar4.png" />
+    <Content Include="Images\imgObjetoPalavra\ChapeuProcurar5.png" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar.png" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar2.png" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar3.png" />
+    <Content Include="Images\imgObjetoPalavra\FloreteProcurar4.png" />
     <Content Include="Images\imgObjetoPalavra\FloreteProcurar5.png" />
-    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar1.jpg" />
-    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar2.jpg" />
-    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar3.jpg" />
-    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar4.jpg" />
-    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar5.jpg" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasFim.png" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar2.png" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar3.png" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar4.png" />
+    <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar5.png" />
     <Content Include="Images\imgPalavra\Adaga.png" />
     <Content Include="Images\imgPalavra\Bone.png" />
     <Content Include="Images\imgPalavra\Bota.png" />
@@ -134,8 +134,8 @@
     <Content Include="Images\imgPalavra\Rato.png" />
     <Content Include="Images\imgPalavra\Sandalia.png" />
     <Content Include="Images\imgPalavra\Sapato.png" />
-    <Content Include="Images\PlayerMasc.png" />
     <Content Include="Images\PlayerFem.png" />
+    <Content Include="Images\PlayerMasc.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

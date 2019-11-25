@@ -19,11 +19,14 @@ namespace Palavrando.Utilities
             // Create a Color using the nextHue value.
             var color = Color.White;
             // Make a circle using that color.
-            var image = Image.CreateCircle(8, color);
+            //var image = Image.CreateCircle(8, color);
+            var image = new Image(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images\imgPalavra\Adaga.png");
             // Make it fancy.
-            image.OutlineColor = Color.Black;
+            //image.OutlineColor = Color.Black;
+            image.Scale = .3f;
             image.OutlineThickness = 1;
-            image.CenterOrigin();
+            //image.CenterOrigin();
+            image.SetPosition(new Vector2(400, 0));
             AddGraphic(image);
 
             // Adjust the nextY and nextHue for the future MovingTweens.
@@ -35,11 +38,9 @@ namespace Palavrando.Utilities
             Y = nextY;
 
             // Tween the Entity across the screen and back for 180 frames.
-            Tween(this, new { Y = Game.Instance.Height - 40 }, 180)
+            Tween(this, new { Y = Game.Instance.HalfWidth - 40 }, 180)
               .Ease(easeType)
-              .Reflect()
-              .RepeatDelay(30)
-              .Repeat();
+              .RepeatDelay(30);
         }
     }
 }

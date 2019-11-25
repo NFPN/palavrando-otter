@@ -30,7 +30,11 @@ namespace Palavrando
             };
 
             //TODO: make pikupitems from spawnmanager get a random image based on word folder
-            GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
+            //GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
+
+            GameObjectList = GameExtensions.ImageListMaker(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images");
+
+       
 
             //Setup Scenes
             SetupGameScene();
