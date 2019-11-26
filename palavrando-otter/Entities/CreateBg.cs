@@ -1,18 +1,13 @@
 ﻿using Otter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace palavrando_otter.Entities
+namespace Palavrando.Entities
 {
     class CreateBg : Entity
     {
         public CreateBg()
         {
-            Image spritemap = new Image(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images\bg-room.png");
-            
+            Image spritemap = new Image(@"C:\Vs\Natanael\REPOS\palavrando-otter\palavrando-otter\Images\bg-room.png");
+
             //spritemap.CenterOrigin();
             spritemap.CenterOriginZero();
 

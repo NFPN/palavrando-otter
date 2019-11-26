@@ -1,10 +1,8 @@
 ﻿using Otter;
 using Palavrando.Entities;
-using Palavrando.Extensions;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utilities;
-using palavrando_otter.Entities;
 using System.Collections.Generic;
 
 namespace Palavrando
@@ -33,9 +31,7 @@ namespace Palavrando
             //TODO: make pikupitems from spawnmanager get a random image based on word folder
             //GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
 
-            GameObjectList = GameExtensions.ImageListMaker(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images");
-
-       
+            //GameObjectList = GameExtensions.ImageListMaker(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images");
 
             //Setup Scenes
             SetupGameScene();
@@ -56,7 +52,7 @@ namespace Palavrando
         private Scene SetupGameScene()
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
-            var player = new Player(MainGame, new MoveSystem(), name: "Collector");
+            var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
             scene.Add(new CreateBg());
             //Add scene Graphics
             scene.AddGraphic(UImanager.GameScore);
@@ -64,8 +60,6 @@ namespace Palavrando
             //Move the Text word to a player in Vertical
             scene.Add(new MovingTween(Ease.CircOut));
 
-            scene.Add(new PlayerAnimation(300,300));//Add o playerAnim
-           
             //Add scene Entities
             scene.Add(player);
             foreach (var pickupItem in SpawnManager.PickupItems)

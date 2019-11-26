@@ -1,86 +1,59 @@
 ﻿using Otter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Palavrando.Interfaces;
 
-namespace palavrando_otter.Entities
+namespace Palavrando.Utilities
 {
-   public class PlayerAnimation : Entity
+    public class PlayerAnimation : IAnimatePlayer
     {
-        // Set up an enum to use for the four different animations.
-        enum Animation
+        private Spritemap<Animation> MySpritemap { get; set; } = new Spritemap<Animation>(@"C:\Vs\Natanael\REPOS\palavrando-otter\palavrando-otter\Images\PlayerMasc.png", 64, 32);
+        private IMoveSystem MoveSystem { get; set; }
+
+        public PlayerAnimation()
         {
-            WalkUp,
-            WalkDown,
-            WalkLeft,
-            WalkRight,
-            PlayOnce,
-            PingPong
+            MySpritemap.Add(Animation.WalkDown, "0,1,2", 5); //Inicial WalkUp
+            MySpritemap.Add(Animation.WalkLeft, "3,4,5", 5);
+            MySpritemap.Add(Animation.WalkRight, "6,7,8", 5);
+            MySpritemap.Add(Animation.WalkUp, "9,10,11", 5);//Inicial WalkLeft
+            MySpritemap.Add(Animation.PlayOnce, "2,5,8,1,2,5,8,1", 60).NoRepeat();
+            MySpritemap.Add(Animation.PingPong, "2,5,8,11", 80).PingPong();
+
+            MySpritemap.CenterOrigin();
         }
 
-        // Create the Spritemap to use. Use Sprite.png as the texture, and define the cell size as 3 x 32.
-        Spritemap<Animation> spritemap = new Spritemap<Animation>(@"C:\Users\nico_\source\repos\GameOtter\JamUc9.2\PlayerMasc.png", 64, 32);
-
-        public PlayerAnimation(float x, float y) : base(x, y)
+        public void Animate()
         {
-            // Add the animation data for walking upward.
-            spritemap.Add(Animation.WalkDown, "0,1,2", 40); //Inicial WalkUp
-            // Add the animation data for walking to the right.
-            spritemap.Add(Animation.WalkLeft, "3,4,5", 40);
-            // Add the animation data for walking downward.
-            spritemap.Add(Animation.WalkRight, "6,7,8", 40);
-            // Add the animation data for walking to the left.
-            spritemap.Add(Animation.WalkUp, "9,10,11", 40);//Inicial WalkLeft
-            // Add the animation data for the PlayOnce test.
-            spritemap.Add(Animation.PlayOnce, "2,5,8,1,2,5,8,1", 60).NoRepeat();
-            // Add the animation data for the PingPong test.
-            spritemap.Add(Animation.PingPong, "2,5,8,11", 80).PingPong();
+            if (MoveSystem == null)
+                return;
 
-            // Center the spritemap's origin.
-            spritemap.CenterOrigin();
-            // Play the walking down animation immediately.
-            spritemap.Play(Animation.WalkDown);
+            if (MoveSystem.IsPressingUp())
+                if (MySpritemap.CurrentAnim != Animation.WalkUp)
+                    MySpritemap.Play(Animation.WalkUp);
 
-            // Add the graphic to the Entity so that it renders.
-            AddGraphic(spritemap);
+            if (MoveSystem.IsPressingDown())
+                if (MySpritemap.CurrentAnim != Animation.WalkDown)
+                    MySpritemap.Play(Animation.WalkDown);
+
+            if (MoveSystem.IsPressingLeft())
+                if (MySpritemap.CurrentAnim != Animation.WalkLeft)
+                    MySpritemap.Play(Animation.WalkLeft);
+
+            if (MoveSystem.IsPressingRight())
+                if (MySpritemap.CurrentAnim != Animation.WalkRight)
+                    MySpritemap.Play(Animation.WalkRight);
+
+            if (MoveSystem.Pressed(Key.X))
+                if (MySpritemap.CurrentAnim != Animation.PlayOnce)
+                    MySpritemap.Play(Animation.PlayOnce);
+
+            if (MoveSystem.Pressed(Key.C))
+                if (MySpritemap.CurrentAnim != Animation.PingPong)
+                    MySpritemap.Play(Animation.PingPong);
+
+            //TODO: make stop animation method
         }
 
-        public override void Update()
-        {
-            base.Update();
+        public Spritemap<Animation> GetAnimationGraphic() => MySpritemap;
 
-            if (Input.KeyPressed(Key.Up))
-            {
-                // Play the walk up animation when the up key is pressed.
-                spritemap.Play(Animation.WalkUp);
-            }
-            if (Input.KeyPressed(Key.Down))
-            {
-                // Play the walk down animation when the down key is pressed.
-                spritemap.Play(Animation.WalkDown);
-            }
-            if (Input.KeyPressed(Key.Left))
-            {
-                // Play the walk left animation when the left key is pressed.
-                spritemap.Play(Animation.WalkLeft);
-            }
-            if (Input.KeyPressed(Key.Right))
-            {
-                // Play the walk right animation when the right key is pressed.
-                spritemap.Play(Animation.WalkRight);
-            }
-            if (Input.KeyPressed(Key.X))
-            {
-                // Play the PlayOnce test animation.
-                spritemap.Play(Animation.PlayOnce);
-            }
-            if (Input.KeyPressed(Key.C))
-            {
-                // Play the PingPong test animation.
-                spritemap.Play(Animation.PingPong);
-            }
-        }
+        public void SetMove(IMoveSystem moveSystem) => MoveSystem = moveSystem;
     }
 }

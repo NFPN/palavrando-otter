@@ -1,4 +1,5 @@
-﻿using Palavrando.Entities;
+﻿using Otter;
+using Palavrando.Entities;
 
 namespace Palavrando.Interfaces
 {
@@ -6,9 +7,11 @@ namespace Palavrando.Interfaces
     {
         void Move(Player player);
 
-        //void AddUpkey(Key up);
-        //void AddLeftkey(Key up);
-        //void AddDownkey(Key up);
-        //void AddRightkey(Key up);
+        bool Pressed(Key key);
+        bool IsPressingUp();
+        bool IsPressingLeft();
+        bool IsPressingDown();
+        bool IsPressingRight();
+        //bool IsAnyKeyPressed();
     }
 }

@@ -20,7 +20,7 @@ namespace Palavrando.Utilities
             var color = Color.White;
             // Make a circle using that color.
             //var image = Image.CreateCircle(8, color);
-            var image = new Image(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images\imgPalavra\Adaga.png");
+            var image = new Image(@"C:\Vs\Natanael\REPOS\palavrando-otter\palavrando-otter\Images\imgPalavra\Adaga.png");
             // Make it fancy.
             //image.OutlineColor = Color.Black;
             image.Scale = .3f;

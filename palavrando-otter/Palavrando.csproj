@@ -65,6 +65,7 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\PlayerAnimation.cs" />
     <Compile Include="Extensions\GameExtensions.cs" />
+    <Compile Include="Interfaces\IAnimatePlayer.cs" />
     <Compile Include="Interfaces\ISwitchScene.cs" />
     <Compile Include="Systems\MoveSystem.cs" />
     <Compile Include="Interfaces\IMoveSystem.cs" />

@@ -24,13 +24,13 @@ namespace Palavrando.Systems
         public void Move(Player player)
         {
             //Inverse Y value
-            if (PressedUp() && !PressedDown())
+            if (IsPressingUp() && !IsPressingDown())
                 player.Y -= player.MoveSpeed;
-            if (PressedDown() && !PressedUp())
+            if (IsPressingDown() && !IsPressingUp())
                 player.Y += player.MoveSpeed;
-            if (PressedRight() && !PressedLeft())
+            if (IsPressingRight() && !IsPressingLeft())
                 player.X += player.MoveSpeed;
-            if (PressedLeft() && !PressedRight())
+            if (IsPressingLeft() && !IsPressingRight())
                 player.X -= player.MoveSpeed;
         }
 
@@ -56,13 +56,20 @@ namespace Palavrando.Systems
 
         #region Input Validation
 
-        private bool PressedUp() => UpKeys.Any(k => MyInput.KeyDown(k));
+        public bool Pressed(Key key) => MyInput.KeyPressed(key);
 
-        private bool PressedLeft() => LeftKeys.Any(k => MyInput.KeyDown(k));
+        public bool IsPressingUp() => UpKeys.Any(k => MyInput.KeyDown(k));
 
-        private bool PressedDown() => DownKeys.Any(k => MyInput.KeyDown(k));
+        public bool IsPressingLeft() => LeftKeys.Any(k => MyInput.KeyDown(k));
 
-        private bool PressedRight() => RightKeys.Any(k => MyInput.KeyDown(k));
+        public bool IsPressingDown() => DownKeys.Any(k => MyInput.KeyDown(k));
+
+        public bool IsPressingRight() => RightKeys.Any(k => MyInput.KeyDown(k));
+
+        /*public bool IsAnyKeyPressed()
+        {
+            return MyInput.
+        }*/
 
         #endregion Input Validation
     }
