@@ -5,7 +5,12 @@ using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utilities;
 using palavrando_otter.Entities;
+using PalavrandoSetup.Data;
+using PalavrandoSetup.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Palavrando
 {
@@ -21,21 +26,17 @@ namespace Palavrando
 
         public GameManager()
         {
+            //TODO: make pikupitems from spawnmanager get a random image based on word folder
+            //GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
+            GameObjectList = GameExtensions.ImageListMaker(@"C:\Users\nicolas.ssoares\Documents\GitPortable\GitHubDesktopPortable\Data\GitHub\palavrando-otter\palavrando-otter\Images");
             MainGame = new Game("Palavrandro", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
-            UImanager = new UIManager(MainGame);
+            UImanager = new UIManager();
             SpawnManager = new PickupItemSpawnManager();
             GameScenes = new Dictionary<string, Scene>()
             {
-                { "Word", SetupWordScene() },
                 { "Game", SetupGameScene() },
+                { "Word", SetupWordScene() },
             };
-
-            //TODO: make pikupitems from spawnmanager get a random image based on word folder
-            //GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
-
-            GameObjectList = GameExtensions.ImageListMaker(@"C:\Users\nico_\Source\Repos\NFPN\palavrando-otter\palavrando-otter\Images");
-
-       
 
             //Setup Scenes
             SetupGameScene();
@@ -43,7 +44,7 @@ namespace Palavrando
 
         public void StartGame()
         {
-            GameScenes.TryGetValue("Game", out Scene scene);
+            GameScenes.TryGetValue("Word", out Scene scene);
             MainGame.Start(scene);
         }
 
@@ -56,20 +57,30 @@ namespace Palavrando
         private Scene SetupGameScene()
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
+           
             var player = new Player(MainGame, new MoveSystem(), name: "Collector");
+
+
             scene.Add(new CreateBg());
             //Add scene Graphics
-            scene.AddGraphic(UImanager.GameScore);
 
             //Move the Text word to a player in Vertical
-            scene.Add(new MovingTween(Ease.CircOut));
+            //scene.Add(new MovingTween(Ease.CircOut));
 
-            scene.Add(new PlayerAnimation(300,300));//Add o playerAnim
-           
+            //scene.Add(new PlayerAnimation(300,300));//Add o playerAnim
+
             //Add scene Entities
+            scene.AddGraphic(UImanager.GameScore);
             scene.Add(player);
+                var rand = new Random();
             foreach (var pickupItem in SpawnManager.PickupItems)
+            {
+                var randNum = rand.Next(0, GameObjectList.Count);
+                GameObjectList[randNum].Scale = 0.1f;
+                pickupItem.SetItem(GameObjectList[randNum]);
+
                 scene.Add(pickupItem);
+            }
 
             return scene;
         }
@@ -77,12 +88,29 @@ namespace Palavrando
         public Scene SetupWordScene()
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
+            scene.Add(new CreateBg());
 
-            //Move the Text word to a player in Vertical
             scene.Add(new MovingTween(Ease.CircOut));
 
-            scene.AddGraphic(Image.CreateRectangle(Game.Instance.Width, Game.Instance.Height, Color.Grey));
             return scene;
+        }
+
+        public async Task FirebaseInitializeAsync(int id, string name, string words, string playerWords)
+        {
+            using (var service = new RealDatabaseService())
+            {
+                await service.Post(new PlayerData()
+                {
+                    Id = id,
+                    Name = name,
+                    Score = new PlayerInstance()
+                    {
+                        IdPlayer = id,
+                        Word = words,
+                        PlayerWords = playerWords
+                    }
+                });
+            }
         }
     }
 }

@@ -8,14 +8,14 @@ namespace Palavrando.Managers
         public List<Text> DebugTexts { get; private set; }
         public RichText GameScore { get; private set; }
 
-        public UIManager(Game currentGame)
+        public UIManager()
         {
-            GameScore = ScoreSetup(currentGame, "Score: 0");
+            GameScore = ScoreSetup( "Score: 0");
           
         }
 
         //Text Configuration
-        private RichText ScoreSetup(Game game, string scoreText)
+        private RichText ScoreSetup(string scoreText)
         {
             var scoreConfig = new RichTextConfig()
             {
@@ -26,7 +26,7 @@ namespace Palavrando.Managers
 
             return new RichText(scoreText, scoreConfig)
             {
-                X = game.HalfWidth - (scoreText.Length * 5),
+                X = Game.Instance.HalfWidth - (scoreText.Length * 5),
                 Y = 10,
                 TextAlign = TextAlign.Center,
             };

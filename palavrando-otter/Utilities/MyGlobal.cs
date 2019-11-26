@@ -2,7 +2,7 @@
 {
     public static class MyGlobal
     {
-        public const int WINDOWWIDTH = 1280;
-        public const int WINDOWHEIGHT = 720;
+        public const int WINDOWWIDTH = 800;
+        public const int WINDOWHEIGHT = 600;
     }
 }

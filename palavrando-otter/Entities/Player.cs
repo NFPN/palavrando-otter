@@ -22,12 +22,12 @@ namespace Palavrando.Entities
             X = posX == 0 ? currentGame.HalfWidth : 0;
             Y = posY == 0 ? currentGame.HalfHeight : 0;
 
-            ItemPickupSFX = new Sound("PickupItem.wav");
+            //ItemPickupSFX = new Sound("PickupItem.wav");
             Collider = new BoxCollider(pX, pY, Tag.Player);
-            //Graphic = graphic ?? Image.CreateRectangle(pX, pY, Color.Blue);
+            Graphic = graphic ?? Image.CreateRectangle(pX, pY, Color.Blue);
 
-            //Graphic.CenterOrigin();
-            animation = new PlayerAnimation(100, 100);
+            Graphic.CenterOrigin();
+            //animation = new PlayerAnimation(100, 100);
             Collider.CenterOrigin();
             MoveSystem = moveSystem;
         }
@@ -42,7 +42,7 @@ namespace Palavrando.Entities
                 {
                     (entity as PickupItem).ChangePosition();
                     Program.Manager.AddScore(10);
-                    ItemPickupSFX.Play();
+                    //ItemPickupSFX.Play();
                 }
 
             base.Update();

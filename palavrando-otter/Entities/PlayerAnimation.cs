@@ -21,7 +21,7 @@ namespace palavrando_otter.Entities
         }
 
         // Create the Spritemap to use. Use Sprite.png as the texture, and define the cell size as 3 x 32.
-        Spritemap<Animation> spritemap = new Spritemap<Animation>(@"C:\Users\nico_\source\repos\GameOtter\JamUc9.2\PlayerMasc.png", 64, 32);
+        Spritemap<Animation> spritemap = new Spritemap<Animation>(@"C:\Users\nicolas.ssoares\Documents\GitPortable\GitHubDesktopPortable\Data\GitHub\palavrando-otter\palavrando-otter\Images\PlayerMasc.png", 64, 32);
 
         public PlayerAnimation(float x, float y) : base(x, y)
         {
