@@ -1,4 +1,7 @@
 ﻿using Otter;
+using palavrando_otter.Systems;
+using System;
+using System.IO;
 
 namespace Palavrando.Entities
 {
@@ -6,7 +9,8 @@ namespace Palavrando.Entities
     {
         public CreateBg()
         {
-            Image spritemap = new Image(@"C:\Users\nicolas.ssoares\Documents\GitPortable\GitHubDesktopPortable\Data\GitHub\palavrando-otter\palavrando-otter\Images\bg-room2.png");
+            
+            Image spritemap = new Image(PathFolder.getDirectory() + @"\Images\bg-room2.png");
 
             spritemap.ScaleY = 1.3f;
             spritemap.ScaleX = 1.3f;

@@ -1,5 +1,7 @@
 ﻿using Otter;
+using palavrando_otter.Systems;
 using System;
+using System.IO;
 
 namespace Palavrando.Utilities
 {
@@ -11,7 +13,7 @@ namespace Palavrando.Utilities
 
         public MovingTween(Func<float, float> easeType)
         {
-            var image = new Image(@"C:\Users\nicolas.ssoares\Documents\GitPortable\GitHubDesktopPortable\Data\GitHub\palavrando-otter\palavrando-otter\Images\imgPalavra\Gato\Gato.png");
+            var image = new Image(PathFolder.getDirectory() + @"\Images\imgPalavra\Gato\Gato.png");
             image.Scale = .45f;
             image.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 4, 0));
             AddGraphic(image);
