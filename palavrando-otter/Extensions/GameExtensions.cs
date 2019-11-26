@@ -12,9 +12,10 @@ namespace Palavrando.Extensions
         /// </summary>
         public static PickupItem ChangePosition(this PickupItem item)
         {
+            var set = 100;
             var randPosition = Rand.IntXY(
-                item.Graphic.Width, MyGlobal.WINDOWWIDTH - (item.Graphic.Width / 2),
-                item.Graphic.Height, MyGlobal.WINDOWHEIGHT - (item.Graphic.Height / 2));
+                set, MyGlobal.WINDOWWIDTH - set/*(item.Graphic.Width / 2)*/,
+                set, MyGlobal.WINDOWHEIGHT - set/*(item.Graphic.Height / 2)*/);
 
             item.SetPosition(randPosition.X, randPosition.Y);
             return item;
@@ -40,6 +41,7 @@ namespace Palavrando.Extensions
                 ImageListMaker(subdirectory, imgList);
 
             return imgList;
+
         }
     }
 

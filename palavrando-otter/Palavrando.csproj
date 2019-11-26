@@ -96,7 +96,7 @@
   <ItemGroup>
     <Content Include="Images\bg-room.png" />
     <Content Include="Images\bg-room2.png" />
-    <Content Include="Images\imgObjetoPalavra\BotasProcurar.png" />
+    <Content Include="Images\imgObjetoPalavra\BotasProcurarCorreta.png" />
     <Content Include="Images\imgObjetoPalavra\BotasProcurar2.png" />
     <Content Include="Images\imgObjetoPalavra\BotasProcurar3.png" />
     <Content Include="Images\imgObjetoPalavra\BotasProcurar4.png" />
@@ -116,28 +116,13 @@
     <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar3.png" />
     <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar4.png" />
     <Content Include="Images\imgObjetoPalavra\GatoDeBotasProcurar5.png" />
-    <Content Include="Images\imgPalavra\Adaga.png" />
-    <Content Include="Images\imgPalavra\Bone.png" />
-    <Content Include="Images\imgPalavra\Bota.png" />
-    <Content Include="Images\imgPalavra\Cachorro.png" />
-    <Content Include="Images\imgPalavra\Capacete.png" />
-    <Content Include="Images\imgPalavra\Cartola.png" />
-    <Content Include="Images\imgPalavra\Chapeu.png" />
-    <Content Include="Images\imgPalavra\Chinelo.png" />
-    <Content Include="Images\imgPalavra\Coroa.png" />
-    <Content Include="Images\imgPalavra\DuasEspadas.png" />
-    <Content Include="Images\imgPalavra\Espada.png" />
-    <Content Include="Images\imgPalavra\Florete.png" />
-    <Content Include="Images\imgPalavra\Gato.png" />
-    <Content Include="Images\imgPalavra\Katana.png" />
-    <Content Include="Images\imgPalavra\Lontra.png" />
-    <Content Include="Images\imgPalavra\Onça.png" />
-    <Content Include="Images\imgPalavra\Rasteirinha.png" />
-    <Content Include="Images\imgPalavra\Rato.png" />
-    <Content Include="Images\imgPalavra\Sandalia.png" />
-    <Content Include="Images\imgPalavra\Sapato.png" />
+    <Content Include="Images\imgPalavra\Bota\Bota.png" />
+    <Content Include="Images\imgPalavra\Chapeu\Chapeu.png" />
+    <Content Include="Images\imgPalavra\Florete\Florete.png" />
+    <Content Include="Images\imgPalavra\Gato\Gato.png" />
     <Content Include="Images\PlayerFem.png" />
     <Content Include="Images\PlayerMasc.png" />
+    <Content Include="Songs\BG_Music.wav" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

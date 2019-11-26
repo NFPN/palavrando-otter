@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PalavrandoSetup.Services
 {
-    internal class RealDatabaseService
+    public class RealDatabaseService : IDisposable
     {
         private FirebaseClient FbaseClient { get; set; }
 
@@ -17,29 +17,43 @@ namespace PalavrandoSetup.Services
 
         public async Task<PlayerInstance> GET()
         {
-            var register = await FbaseClient
+            try
+            {
+                var register = await FbaseClient
                 .Child("PlayerData")
                 .OrderByKey()
                 .StartAt("search")
                 .OnceAsync<PlayerInstance>();
 
-            //foreach (var line in register)
-            //{
-            //    Console.WriteLine($"{line.Key} is {line.Object}");
-            //}
 
-            return (register as PlayerInstance);
+                return (register as PlayerInstance);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+
         }
 
         public async Task Post(PlayerData player)
         {
-            var register = await FbaseClient
+            try
+            {
+                var register = await FbaseClient
                 .Child("PlayerData")
                 .PostAsync(player.Score);
 
-            var register2 = await FbaseClient
-                .Child("PlayerInstance")
-                .PostAsync(1);
+                var register2 = await FbaseClient
+                    .Child("PlayerInstance")
+                    .PostAsync(1);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public async Task PUT()
@@ -55,6 +69,11 @@ namespace PalavrandoSetup.Services
             await FbaseClient
                   .Child("PlayerData")
                   .DeleteAsync();
+        }
+
+        public void Dispose()
+        {
+            Dispose();
         }
     }
 }
