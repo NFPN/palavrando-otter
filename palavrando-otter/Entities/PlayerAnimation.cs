@@ -7,28 +7,7 @@ using System.Threading.Tasks;
 
 namespace palavrando_otter.Entities
 {
-    class PlayerAnimation
-    {
-        //    static void Main(string[] args)
-        //    {
-        //        // Create a game that's 160 x 120
-        //        var game = new Otter.Game("Spritemap Animation", 160, 120);
-        //        // Set the window scale to 3x to see the sprite better.
-        //        game.SetWindowScale(3);
-        //        // Set the background color to a bluish hue.
-        //        game.Color = new Color(0.3f, 0.5f, 0.7f);
-
-        //        // Create a scene.
-        //        var scene = new Scene();
-        //        // Add the animating entity to the scene.
-        //        scene.Add(new AnimatingEntity(game.HalfWidth, game.HalfHeight));
-
-        //        // Start the game with the scene that was just created.
-        //        game.Start(scene);
-        //    }
-    }
-
-    class AnimatingEntity : Entity
+   public class PlayerAnimation : Entity
     {
         // Set up an enum to use for the four different animations.
         enum Animation
@@ -41,10 +20,10 @@ namespace palavrando_otter.Entities
             PingPong
         }
 
-        // Create the Spritemap to use. Use Sprite.png as the texture, and define the cell size as 32 x 32.
+        // Create the Spritemap to use. Use Sprite.png as the texture, and define the cell size as 3 x 32.
         Spritemap<Animation> spritemap = new Spritemap<Animation>(@"C:\Users\nico_\source\repos\GameOtter\JamUc9.2\PlayerMasc.png", 64, 32);
 
-        public AnimatingEntity(float x, float y) : base(x, y)
+        public PlayerAnimation(float x, float y) : base(x, y)
         {
             // Add the animation data for walking upward.
             spritemap.Add(Animation.WalkDown, "0,1,2", 40); //Inicial WalkUp

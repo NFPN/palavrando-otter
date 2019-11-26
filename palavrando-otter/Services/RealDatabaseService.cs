@@ -23,10 +23,10 @@ namespace PalavrandoSetup.Services
                 .StartAt("search")
                 .OnceAsync<PlayerInstance>();
 
-            foreach (var line in register)
-            {
-                Console.WriteLine($"{line.Key} is {line.Object}");
-            }
+            //foreach (var line in register)
+            //{
+            //    Console.WriteLine($"{line.Key} is {line.Object}");
+            //}
 
             return (register as PlayerInstance);
         }
@@ -36,6 +36,10 @@ namespace PalavrandoSetup.Services
             var register = await FbaseClient
                 .Child("PlayerData")
                 .PostAsync(player.Score);
+
+            var register2 = await FbaseClient
+                .Child("PlayerInstance")
+                .PostAsync(1);
         }
 
         public async Task PUT()

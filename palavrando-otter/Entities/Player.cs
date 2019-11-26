@@ -1,6 +1,7 @@
 ﻿using Otter;
 using Palavrando.Extensions;
 using Palavrando.Interfaces;
+using palavrando_otter.Entities;
 
 namespace Palavrando.Entities
 {
@@ -12,7 +13,7 @@ namespace Palavrando.Entities
         public Vector2 PlayerSize { get; private set; } = new Vector2(25, 25);
 
         //Base Player, Instancing with x & y empty will make the player spaw at the center of screen
-        public Player(Game currentGame, IMoveSystem moveSystem, float posX = 0, float posY = 0, Graphic graphic = null, Collider collider = null, string name = "")
+        public Player(Game currentGame, IMoveSystem moveSystem, float posX = 0, float posY = 0,PlayerAnimation animation = null , Graphic graphic = null, Collider collider = null, string name = "")
             : base(posX, posY, graphic, collider, name)
         {
             var pX = (int)PlayerSize.X;
@@ -23,9 +24,10 @@ namespace Palavrando.Entities
 
             ItemPickupSFX = new Sound("PickupItem.wav");
             Collider = new BoxCollider(pX, pY, Tag.Player);
-            Graphic = graphic ?? Image.CreateRectangle(pX, pY, Color.Blue);
+            //Graphic = graphic ?? Image.CreateRectangle(pX, pY, Color.Blue);
 
-            Graphic.CenterOrigin();
+            //Graphic.CenterOrigin();
+            animation = new PlayerAnimation(100, 100);
             Collider.CenterOrigin();
             MoveSystem = moveSystem;
         }

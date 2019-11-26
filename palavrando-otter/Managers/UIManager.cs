@@ -11,7 +11,7 @@ namespace Palavrando.Managers
         public UIManager(Game currentGame)
         {
             GameScore = ScoreSetup(currentGame, "Score: 0");
-            
+          
         }
 
         //Text Configuration

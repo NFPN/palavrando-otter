@@ -4,6 +4,7 @@ using Palavrando.Extensions;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utilities;
+using palavrando_otter.Entities;
 using System.Collections.Generic;
 
 namespace Palavrando
@@ -20,7 +21,7 @@ namespace Palavrando
 
         public GameManager()
         {
-            MainGame = new Game("The Collector", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
+            MainGame = new Game("Palavrandro", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
             UImanager = new UIManager(MainGame);
             SpawnManager = new PickupItemSpawnManager();
             GameScenes = new Dictionary<string, Scene>()
@@ -56,16 +57,15 @@ namespace Palavrando
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), name: "Collector");
-
+            scene.Add(new CreateBg());
             //Add scene Graphics
             scene.AddGraphic(UImanager.GameScore);
 
             //Move the Text word to a player in Vertical
             scene.Add(new MovingTween(Ease.CircOut));
 
-            // Add an Entity that tweens in response to a key press.
-            scene.Add(new ReactiveTween(540, 400));
-
+            scene.Add(new PlayerAnimation(300,300));//Add o playerAnim
+           
             //Add scene Entities
             scene.Add(player);
             foreach (var pickupItem in SpawnManager.PickupItems)
@@ -77,6 +77,10 @@ namespace Palavrando
         public Scene SetupWordScene()
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
+
+            //Move the Text word to a player in Vertical
+            scene.Add(new MovingTween(Ease.CircOut));
+
             scene.AddGraphic(Image.CreateRectangle(Game.Instance.Width, Game.Instance.Height, Color.Grey));
             return scene;
         }
