@@ -1,4 +1,5 @@
 ﻿using Otter;
+using Palavrando.Managers;
 using palavrando_otter.Systems;
 using System;
 using System.IO;
@@ -7,7 +8,7 @@ namespace Palavrando.Entities
 {
     class CreateBg : Entity
     {
-        public CreateBg()
+        public CreateBg(UIManager uIManager)
         {
             
             Image spritemap = new Image(PathFolder.getDirectory() + @"\Images\bg-room2.png");
@@ -20,6 +21,7 @@ namespace Palavrando.Entities
 
             // Add the graphic to the Entity so that it renders.
             AddGraphic(spritemap,Game.Instance.HalfWidth -40, Game.Instance.HalfHeight - 2);
+            AddGraphic(uIManager.GameScore);
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Palavrando
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
             //FirebaseInitializeAsync(1,"nicolas","lindo","ana");
-            scene.Add(new CreateBg());
+            scene.Add(new CreateBg(UImanager));
          
             scene.AddGraphic(UImanager.GameScore);
             scene.Add(player);
@@ -78,7 +78,7 @@ namespace Palavrando
         public Scene SetupWordScene()
         {
             var scene = new CustomScene("BG_Music.wav", sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
-            scene.Add(new CreateBg());
+            scene.Add(new CreateBg(UImanager));
 
             scene.Add(new MovingTween(Ease.CircOut));
 
