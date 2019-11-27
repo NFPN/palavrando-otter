@@ -59,7 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\PlayerData.cs" />
-    <Compile Include="Data\PlayerInstance .cs" />
+    <Compile Include="Data\PlayerWords.cs" />
+    <Compile Include="Data\StoryData.cs" />
+    <Compile Include="Data\WordData.cs" />
     <Compile Include="Entities\CreateBg.cs" />
     <Compile Include="Entities\PickupItem.cs" />
     <Compile Include="Entities\Player.cs" />

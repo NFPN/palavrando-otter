@@ -1,9 +1,11 @@
-﻿namespace PalavrandoSetup.Data
+﻿using System.Collections.Generic;
+
+namespace PalavrandoSetup.Data
 {
     public class PlayerData
     {
-        public int Id { get; set; }
+        public string HashID { get; set; }
         public string Name { get; set; }
-        public PlayerInstance Score { get; set; }
+        public List<PlayerWords> Words { get; set; }
     }
 }
