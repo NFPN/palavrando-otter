@@ -1,9 +1,8 @@
 ﻿using Otter;
 using Palavrando.Extensions;
-using palavrando_otter.Systems;
+using Palavrando.Systems;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Palavrando.Utilities
 {
@@ -16,19 +15,17 @@ namespace Palavrando.Utilities
 
         public MovingTween(Func<float, float> easeType)
         {
-            GameObjectList = GameExtensions.ImageListMaker(PathFolder.getDirectory() + @"\Images\imgPalavra");
-            Image image = null;
+            GameObjectList = GameExtensions.ImageListMaker(PathFolder.GetDirectory() + @"\Images\imgPalavra");
 
             var rand = new Random();
-            foreach (var item in GameObjectList)
-            {
-                var randNum = rand.Next(0, GameObjectList.Count);
-                GameObjectList[randNum].Scale = 0.45f;
-                item.Scale = .45f;
-                item.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 4, 0));
-                AddGraphic(GameObjectList[randNum]);
-                break;
-            }
+            var randNum = rand.Next(0, GameObjectList.Count);
+            var randImg = GameObjectList[randNum];
+            randImg.CenterOrigin();
+            randImg.Scale = 0.45f;
+            randImg.Scale = .45f;
+            randImg.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 2, 0));
+            AddGraphic(randImg);
+
             // Adjust the nextY and nextHue for the future MovingTweens.
             nextY += spacing;
             nextHue += 0.05f;

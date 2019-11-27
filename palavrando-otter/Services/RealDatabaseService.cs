@@ -25,16 +25,12 @@ namespace PalavrandoSetup.Services
                 .StartAt("search")
                 .OnceAsync<PlayerInstance>();
 
-
                 return (register as PlayerInstance);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-            
-
         }
 
         public async Task Post(PlayerData player)
@@ -51,7 +47,6 @@ namespace PalavrandoSetup.Services
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

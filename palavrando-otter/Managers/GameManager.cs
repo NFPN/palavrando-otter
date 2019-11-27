@@ -4,12 +4,10 @@ using Palavrando.Extensions;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utilities;
-using palavrando_otter.Systems;
 using PalavrandoSetup.Data;
 using PalavrandoSetup.Services;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace Palavrando
@@ -25,8 +23,8 @@ namespace Palavrando
 
         public GameManager()
         {
-            //TODO: make pikupitems from spawnmanager get a random image based on word folder         
-            GameObjectList = GameExtensions.ImagePalavraBota(PathFolder.getDirectory() + @"\Images\imgObjetoPalavra\BotasProcurar");
+            //TODO: make pikupitems from spawnmanager get a random image based on word folder
+            GameObjectList = GameExtensions.ImagePalavraBota(PathFolder.GetDirectory() + @"\Images\imgObjetoPalavra\BotasProcurar");
 
             MainGame = new Game("Palavrandro", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
             UImanager = new UIManager();
@@ -62,7 +60,7 @@ namespace Palavrando
          
             scene.AddGraphic(UImanager.GameScore);
             scene.Add(player);
-                var rand = new Random();
+            var rand = new Random();
             foreach (var pickupItem in SpawnManager.PickupItems)
             {
                 var randNum = rand.Next(0, GameObjectList.Count);
@@ -81,7 +79,6 @@ namespace Palavrando
             scene.Add(new CreateBg(UImanager));
 
             scene.Add(new MovingTween(Ease.CircOut));
-
             return scene;
         }
 

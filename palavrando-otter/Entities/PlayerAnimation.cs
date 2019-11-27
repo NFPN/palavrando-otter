@@ -1,15 +1,12 @@
 ﻿using Otter;
 using Palavrando.Interfaces;
-using palavrando_otter.Systems;
-using System;
-using System.IO;
+using Palavrando.Systems;
 
 namespace Palavrando.Utilities
 {
     public class PlayerAnimation : IAnimatePlayer
     {
-
-        private Spritemap<Animation> MySpritemap { get; set; } = new Spritemap<Animation>(PathFolder.getDirectory() + @"\Images\PlayerMasc.png", 64, 32);
+        private Spritemap<Animation> MySpritemap { get; set; } = new Spritemap<Animation>(PathFolder.GetDirectory() + @"\Images\PlayerMasc.png", 64, 32);
         private IMoveSystem MoveSystem { get; set; }
 
         public PlayerAnimation()

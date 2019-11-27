@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace palavrando_otter.Systems
+namespace Palavrando.Systems
 {
-    class PathFolder
+    public class PathFolder
     {
-        static public string getDirectory()
+        static public string GetDirectory()
         {
             string i = Environment.CurrentDirectory;
             string newPath = Path.GetFullPath(Path.Combine(i, @"..\..\"));

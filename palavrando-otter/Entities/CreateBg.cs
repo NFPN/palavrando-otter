@@ -1,17 +1,13 @@
 ﻿using Otter;
-using Palavrando.Managers;
-using palavrando_otter.Systems;
-using System;
-using System.IO;
+using Palavrando.Systems;
 
 namespace Palavrando.Entities
 {
-    class CreateBg : Entity
+    internal class CreateBg : Entity
     {
         public CreateBg(UIManager uIManager)
         {
-            
-            Image spritemap = new Image(PathFolder.getDirectory() + @"\Images\bg-room2.png");
+            Image spritemap = new Image(PathFolder.GetDirectory() + @"\Images\bg-room2.png");
 
             spritemap.ScaleY = 1.3f;
             spritemap.ScaleX = 1.3f;

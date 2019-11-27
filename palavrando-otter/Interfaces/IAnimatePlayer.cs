@@ -5,7 +5,9 @@ namespace Palavrando.Interfaces
     public interface IAnimatePlayer
     {
         Spritemap<Animation> GetAnimationGraphic();
+
         void Animate();
+
         void SetMove(IMoveSystem moveSystem);
     }
 

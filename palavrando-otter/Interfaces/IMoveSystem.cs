@@ -8,10 +8,15 @@ namespace Palavrando.Interfaces
         void Move(Player player);
 
         bool Pressed(Key key);
+
         bool IsPressingUp();
+
         bool IsPressingLeft();
+
         bool IsPressingDown();
+
         bool IsPressingRight();
+
         //bool IsAnyKeyPressed();
     }
 }

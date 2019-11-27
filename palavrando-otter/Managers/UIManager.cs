@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace Palavrando.Managers
 {
-    public class UIManager 
+    public class UIManager
     {
         public List<Text> DebugTexts { get; private set; }
         public RichText GameScore { get; private set; }
 
         public UIManager()
         {
-            GameScore = ScoreSetup( "Score: 0");
-          
+            GameScore = ScoreSetup("Score: 0");
         }
 
         //Text Configuration

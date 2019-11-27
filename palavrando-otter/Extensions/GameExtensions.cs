@@ -41,8 +41,8 @@ namespace Palavrando.Extensions
                 ImageListMaker(subdirectory, imgList);
 
             return imgList;
-
         }
+
         public static List<Image> ImagePalavra(string targetDirectory, List<Image> imgList = null)
         {
             if (imgList == null)
@@ -60,8 +60,8 @@ namespace Palavrando.Extensions
                 ImageListMaker(subdirectory, imgList);
 
             return imgList;
-
         }
+
         public static List<Image> ImagePalavraBota(string targetDirectory, List<Image> imgList = null)
         {
             if (imgList == null)
@@ -79,11 +79,8 @@ namespace Palavrando.Extensions
                 ImageListMaker(subdirectory, imgList);
 
             return imgList;
-
         }
-
     }
-
 
     public enum Tag
     {
