@@ -80,7 +80,7 @@ namespace Palavrando
             var scene = new CustomScene("BG_Music.wav", sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
             scene.Add(new CreateBg());
 
-            //scene.Add(new MovingTween(Ease.CircOut));
+            scene.Add(new MovingTween(Ease.CircOut));
 
             return scene;
         }

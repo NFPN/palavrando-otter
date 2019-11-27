@@ -24,13 +24,11 @@ namespace Palavrando.Utilities
             {
                 var randNum = rand.Next(0, GameObjectList.Count);
                 GameObjectList[randNum].Scale = 0.45f;
-                //image = new Image(GameObjectList);
+                item.Scale = .45f;
+                item.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 4, 0));
+                AddGraphic(GameObjectList[randNum]);
+                break;
             }
-
-            image.Scale = .45f;
-            image.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 4, 0));
-            AddGraphic(image);
-
             // Adjust the nextY and nextHue for the future MovingTweens.
             nextY += spacing;
             nextHue += 0.05f;
