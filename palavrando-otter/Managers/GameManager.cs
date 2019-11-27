@@ -8,6 +8,7 @@ using PalavrandoSetup.Data;
 using PalavrandoSetup.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Palavrando
@@ -15,24 +16,35 @@ namespace Palavrando
     public class GameManager
     {
         private int Score { get; set; }
-        private Game MainGame { get; set; }
-        public UIManager UImanager { get; private set; }
-        public PickupItemSpawnManager SpawnManager { get; private set; }
+        private List<Image> WordImageList { get; set; }
+        private PickupItemSpawnManager SpawnManager { get; set; }
+        public Image SelectedWordImage { get; set; }
+
+        public Game MainGame { get; private set; }
         public Dictionary<string, Scene> GameScenes { get; private set; }
-        public List<Image> GameObjectList { get; private set; }
+        public UIManager UImanager { get; private set; }
 
         public GameManager()
         {
-            //TODO: make pikupitems from spawnmanager get a random image based on word folder
-            GameObjectList = GameExtensions.ImagePalavraBota(PathFolder.GetDirectory() + @"\Images\imgObjetoPalavra\BotasProcurar");
-
             MainGame = new Game("Palavrandro", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
+            AwakeManager();
+        }
+
+        private void AwakeManager()
+        {
+            SelectedWordImage = GetRandomImageFromFolder(out string wordName);
+            //TODO: make pikupitems from spawnmanager get a random image based on word folder
+            WordImageList = GameExtensions.ImageListMaker(PathFolder.GetDirectory() + @"\Images\imgObjetoPalavra", out List<string> _, wordName);
+
+            if (WordImageList.Count > 5)
+                WordImageList.Remove(WordImageList[0]);
+
             UImanager = new UIManager();
             SpawnManager = new PickupItemSpawnManager();
             GameScenes = new Dictionary<string, Scene>()
             {
-                { "Game", SetupGameScene() },
                 { "Word", SetupWordScene() },
+                { "Game", SetupGameScene() },
             };
 
             //Setup Scenes
@@ -57,28 +69,27 @@ namespace Palavrando
             var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
             //FirebaseInitializeAsync(1,"nicolas","lindo","ana");
             scene.Add(new CreateBg(UImanager));
-         
             scene.AddGraphic(UImanager.GameScore);
             scene.Add(player);
-            var rand = new Random();
-            foreach (var pickupItem in SpawnManager.PickupItems)
-            {
-                var randNum = rand.Next(0, GameObjectList.Count);
-                GameObjectList[randNum].Scale = 0.1f;
-                pickupItem.SetItem(GameObjectList[randNum]);
-                //GameObjectList.Remove(GameObjectList[randNum]);
-                scene.Add(pickupItem);
-            }
 
+            for (int i = 0; i < SpawnManager.PickupItems.Count; i++)
+            {
+                var item = SpawnManager.PickupItems[i];
+                item.SetItem(WordImageList[i]);
+                item.Graphic.ScaledHeight = 50;
+                item.Graphic.ScaledWidth = 50;
+                item.Name = Path.GetFileNameWithoutExtension(item.Graphic.Texture.Source);
+                scene.Add(item);
+                //var test = SpawnManager.PickupItems[i].Graphic.Texture.Source.Contains("Corret");
+            }
             return scene;
         }
 
         public Scene SetupWordScene()
         {
-            var scene = new CustomScene("BG_Music.wav", sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
+            var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
             scene.Add(new CreateBg(UImanager));
-
-            scene.Add(new MovingTween(Ease.CircOut));
+            scene.Add(new MovingTween(Ease.CircOut, SelectedWordImage));
             return scene;
         }
 
@@ -98,6 +109,15 @@ namespace Palavrando
                     }
                 });
             }
+        }
+
+        public Image GetRandomImageFromFolder(out string imageName)
+        {
+            var imgList = GameExtensions.ImageListMaker(PathFolder.GetDirectory() + @"\Images\imgPalavra", out List<string> names);
+            var rand = new Random();
+            var randNum = rand.Next(0, imgList.Count);
+            imageName = Path.GetFileNameWithoutExtension(names[randNum]);
+            return imgList[randNum];
         }
     }
 }

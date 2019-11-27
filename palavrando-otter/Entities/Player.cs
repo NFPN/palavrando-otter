@@ -46,10 +46,17 @@ namespace Palavrando.Entities
             Animator.Animate();
 
             var collisions = Collider.CollideEntities(X, Y, Tag.PickupItem);
-            if (collisions != null)
+            if (collisions != null && collisions.Count > 0)
                 foreach (var entity in collisions)
                 {
-                    (entity as PickupItem).ChangePosition();
+                    var collEntity = (PickupItem)entity;
+
+                    if (collEntity.Name.Contains("Corret"))
+                    {
+                        Program.ResetGame();//Manager.GameScenes.TryGetValue("Word", out Scene scene);
+                    }
+
+                    collEntity.ChangePosition();
                     Program.Manager.AddScore(10);
                     //ItemPickupSFX.Play();
                 }

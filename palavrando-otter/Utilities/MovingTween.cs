@@ -1,38 +1,29 @@
 ﻿using Otter;
-using Palavrando.Extensions;
-using Palavrando.Systems;
 using System;
-using System.Collections.Generic;
 
 namespace Palavrando.Utilities
 {
     public class MovingTween : Entity
     {
-        public List<Image> GameObjectList { get; private set; }
-        private static float nextY;
-        private static float spacing = 10;
-        private static float nextHue = 40;
+        private float NextY { get; set; }
+        private float Spacing { get; set; } = 10;
+        private float NextHue { get; set; } = 40;
 
-        public MovingTween(Func<float, float> easeType)
+        public MovingTween(Func<float, float> easeType, Image chosenWord)
         {
-            GameObjectList = GameExtensions.ImageListMaker(PathFolder.GetDirectory() + @"\Images\imgPalavra");
-
-            var rand = new Random();
-            var randNum = rand.Next(0, GameObjectList.Count);
-            var randImg = GameObjectList[randNum];
-            randImg.CenterOrigin();
-            randImg.Scale = 0.45f;
-            randImg.Scale = .45f;
-            randImg.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 2, 0));
-            AddGraphic(randImg);
+            chosenWord.CenterOrigin();
+            chosenWord.Scale = 0.45f;
+            chosenWord.Scale = .45f;
+            chosenWord.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 2, 0));
+            AddGraphic(chosenWord);
 
             // Adjust the nextY and nextHue for the future MovingTweens.
-            nextY += spacing;
-            nextHue += 0.05f;
+            NextY += Spacing;
+            NextHue += 0.05f;
 
             // Set the position here.
             X = 40;
-            Y = nextY;
+            Y = NextY;
 
             // Tween the Entity across the screen and back for 180 frames.
             Tween(this, new { Y = Game.Instance.HalfWidth - 120 }, 300)

@@ -7,8 +7,8 @@ namespace Palavrando.Systems
     {
         static public string GetDirectory()
         {
-            string i = Environment.CurrentDirectory;
-            string newPath = Path.GetFullPath(Path.Combine(i, @"..\..\"));
+            string current = Environment.CurrentDirectory;
+            string newPath = Path.GetFullPath(Path.Combine(current, @"..\..\"));
             return newPath;
         }
     }

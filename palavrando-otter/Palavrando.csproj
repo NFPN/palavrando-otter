@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{75AD29A7-AB15-445D-A3F1-0922D9E9B9A0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>palavrando_otter</RootNamespace>
-    <AssemblyName>palavrando-otter</AssemblyName>
+    <RootNamespace>Palavrando</RootNamespace>
+    <AssemblyName>Palavrando</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -109,17 +109,17 @@
     <Content Include="Images\imgObjetoPalavra\ChapeusProcurar\ChapeuProcurar3.png" />
     <Content Include="Images\imgObjetoPalavra\ChapeusProcurar\ChapeuProcurar4.png" />
     <Content Include="Images\imgObjetoPalavra\ChapeusProcurar\ChapeuProcurar5.png" />
-    <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcuraCorreto.png" />
+    <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurarCorreto.png" />
     <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurar2.png" />
     <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurar3.png" />
     <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurar4.png" />
     <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurar5.png" />
-    <Content Include="Images\imgObjetoPalavra\GatoDeBotasFim.png" />
-    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoDeBotasProcurarCorreto.jpg" />
-    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoDeBotasProcurar2.png" />
-    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoDeBotasProcurar3.png" />
-    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoDeBotasProcurar4.png" />
-    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoDeBotasProcurar5.png" />
+    <Content Include="Images\GatoDeBotasFim.png" />
+    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurarCorreto.jpg" />
+    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar2.png" />
+    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar3.png" />
+    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar4.png" />
+    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar5.png" />
     <Content Include="Images\imgPalavra\Bota\Bota.png" />
     <Content Include="Images\imgPalavra\Chapeu\Chapeu.png" />
     <Content Include="Images\imgPalavra\Florete\Florete.png" />

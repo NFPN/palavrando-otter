@@ -1,4 +1,5 @@
 ﻿using Otter;
+using Palavrando.Managers;
 using Palavrando.Systems;
 
 namespace Palavrando.Entities
