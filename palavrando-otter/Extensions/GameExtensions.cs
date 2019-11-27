@@ -43,7 +43,28 @@ namespace Palavrando.Extensions
             return imgList;
 
         }
+        public static List<Image> ImagePalavra(string targetDirectory, List<Image> imgList = null)
+        {
+            if (imgList == null)
+                imgList = new List<Image>();
+
+            // Process the list of files found in the directory.
+            string[] fileEntries = Directory.GetFiles(targetDirectory);
+            foreach (string fileName in fileEntries)
+                if (fileName.Contains(".png"))
+                    imgList.Add(new Image(fileName));
+
+            // Recurse into subdirectories of this directory.
+            string[] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
+            foreach (string subdirectory in subdirectoryEntries)
+                ImageListMaker(subdirectory, imgList);
+
+            return imgList;
+
+        }
+
     }
+
 
     public enum Tag
     {

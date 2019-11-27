@@ -1,19 +1,32 @@
 ﻿using Otter;
+using Palavrando.Extensions;
 using palavrando_otter.Systems;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Palavrando.Utilities
 {
     public class MovingTween : Entity
     {
+        public List<Image> GameObjectList { get; private set; }
         private static float nextY;
         private static float spacing = 10;
         private static float nextHue = 40;
 
         public MovingTween(Func<float, float> easeType)
         {
-            var image = new Image(PathFolder.getDirectory() + @"\Images\imgPalavra\Gato\Gato.png");
+            GameObjectList = GameExtensions.ImageListMaker(PathFolder.getDirectory() + @"\Images\imgPalavra");
+            Image image = null;
+
+            var rand = new Random();
+            foreach (var item in GameObjectList)
+            {
+                var randNum = rand.Next(0, GameObjectList.Count);
+                GameObjectList[randNum].Scale = 0.45f;
+                //image = new Image(GameObjectList);
+            }
+
             image.Scale = .45f;
             image.SetPosition(new Vector2(MyGlobal.WINDOWWIDTH / 4, 0));
             AddGraphic(image);

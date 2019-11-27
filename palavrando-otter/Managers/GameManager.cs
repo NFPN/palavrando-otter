@@ -18,7 +18,6 @@ namespace Palavrando
     {
         private int Score { get; set; }
         private Game MainGame { get; set; }
-
         public UIManager UImanager { get; private set; }
         public PickupItemSpawnManager SpawnManager { get; private set; }
         public Dictionary<string, Scene> GameScenes { get; private set; }
@@ -26,10 +25,9 @@ namespace Palavrando
 
         public GameManager()
         {
-            //TODO: make pikupitems from spawnmanager get a random image based on word folder
-            //GameObjectList = GameExtensions.ImageListMaker(@"D:\GitRepos\palavrando-otter\palavrando-otter\Images\");
-            
-            GameObjectList = GameExtensions.ImageListMaker(PathFolder.getDirectory() + @"\Images");
+            //TODO: make pikupitems from spawnmanager get a random image based on word folder         
+            GameObjectList = GameExtensions.ImageListMaker(PathFolder.getDirectory() + @"\Images\imgObjetoPalavra");
+
             MainGame = new Game("Palavrandro", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
             UImanager = new UIManager();
             SpawnManager = new PickupItemSpawnManager();
@@ -59,15 +57,9 @@ namespace Palavrando
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
-
-
+            //FirebaseInitializeAsync(1,"nicolas","lindo","ana");
             scene.Add(new CreateBg());
-            //Add scene Graphics
-
-            //Move the Text word to a player in Vertical
-            //scene.Add(new MovingTween(Ease.CircOut));
-
-            //Add scene Entities
+         
             scene.AddGraphic(UImanager.GameScore);
             scene.Add(player);
                 var rand = new Random();
@@ -76,7 +68,7 @@ namespace Palavrando
                 var randNum = rand.Next(0, GameObjectList.Count);
                 GameObjectList[randNum].Scale = 0.1f;
                 pickupItem.SetItem(GameObjectList[randNum]);
-
+                //GameObjectList.Remove(GameObjectList[randNum]);
                 scene.Add(pickupItem);
             }
 
@@ -85,10 +77,10 @@ namespace Palavrando
 
         public Scene SetupWordScene()
         {
-            var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
+            var scene = new CustomScene("BG_Music.wav", sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
             scene.Add(new CreateBg());
 
-            scene.Add(new MovingTween(Ease.CircOut));
+            //scene.Add(new MovingTween(Ease.CircOut));
 
             return scene;
         }
