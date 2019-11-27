@@ -26,7 +26,7 @@ namespace Palavrando
         public GameManager()
         {
             //TODO: make pikupitems from spawnmanager get a random image based on word folder         
-            GameObjectList = GameExtensions.ImageListMaker(PathFolder.getDirectory() + @"\Images\imgObjetoPalavra");
+            GameObjectList = GameExtensions.ImagePalavraBota(PathFolder.getDirectory() + @"\Images\imgObjetoPalavra\BotasProcurar");
 
             MainGame = new Game("Palavrandro", MyGlobal.WINDOWWIDTH, MyGlobal.WINDOWHEIGHT);
             UImanager = new UIManager();
