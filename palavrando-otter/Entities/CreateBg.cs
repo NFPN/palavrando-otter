@@ -3,7 +3,7 @@ using Palavrando.Systems;
 
 namespace Palavrando.Entities
 {
-    internal class CreateBg : Entity
+    public class CreateBg : Entity
     {
         public CreateBg(UIManager uIManager)
         {
