@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Palavrando
 {
@@ -55,6 +56,7 @@ namespace Palavrando
         public void StartGame()
         {
             FirebaseInitializeAsync("99nicolas");
+            FirebaseGet();
             GameScenes.TryGetValue("Word", out Scene scene);
             MainGame.Start(scene);
         }
@@ -69,7 +71,7 @@ namespace Palavrando
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
-
+            //Application.Run(new WinfInserTextPlayer());
 
             scene.Add(new CreateBg(UImanager));
             scene.Add(player);
@@ -101,6 +103,14 @@ namespace Palavrando
             using (var service = new RealDatabaseService())
             {
                 await service.Post(new PlayerName(name));
+            }
+        }
+
+        public async Task FirebaseGet()
+        {
+            using (var service = new RealDatabaseService())
+            {
+                var result = await service.GET();
             }
         }
 

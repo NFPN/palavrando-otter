@@ -14,6 +14,7 @@ namespace Palavrando.Managers
         {
             GameScore = ScoreSetup("Score: 0");
             Message = MessageToPlayer("Aperte Qualquer Tecla");
+            //DebugTexts = Debug();
         }
 
         //Text Configuration
@@ -35,6 +36,23 @@ namespace Palavrando.Managers
         }
 
         private RichText MessageToPlayer(string scoreText)
+        {
+            var scoreConfig = new RichTextConfig()
+            {
+                CharColor0 = Color.Cyan,
+                CharColor1 = Color.White,
+                FontSize = 32,
+            };
+
+            return new RichText(scoreText, scoreConfig)
+            {
+                X = Game.Instance.HalfWidth - (scoreText.Length * 7),
+                Y = Game.Instance.WindowHeight - (scoreText.Length * 5),
+                TextAlign = TextAlign.Center,
+            };
+        }
+
+        private RichText Debug(string scoreText)
         {
             var scoreConfig = new RichTextConfig()
             {

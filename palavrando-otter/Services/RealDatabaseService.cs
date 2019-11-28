@@ -3,6 +3,7 @@ using Firebase.Database.Query;
 using Palavrando.FakeNameCreator;
 using PalavrandoSetup.Data;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PalavrandoSetup.Services
@@ -16,17 +17,24 @@ namespace PalavrandoSetup.Services
             FbaseClient = new FirebaseClient("https://palavrando-otte2d.firebaseio.com/");
         }
 
-        public async Task<PlayerWords> GET()
+        public async Task<List<PlayerName>> GET()
         {
             try
             {
                 var register = await FbaseClient
-                .Child("PlayerData")
+                .Child("PlayerName")
                 .OrderByKey()
-                .StartAt("search")
-                .OnceAsync<PlayerWords>();
+                //.StartAt("search")
+                .OnceAsync<PlayerName>();
 
-                return (register as PlayerWords);
+                var resultList = new List<PlayerName>();
+
+                foreach (var item in register)
+                {
+                    resultList.Add(item.Object);
+                }
+
+                return resultList;
             }
             catch (Exception ex)
             {

@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.4.0.0\lib\net46\System.Reactive.dll</HintPath>
     </Reference>
@@ -89,6 +90,12 @@
     <Compile Include="Utilities\ReactiveTween.cs" />
     <Compile Include="Utilities\ScalingTween.cs" />
     <Compile Include="Utilities\SceneSwitcher.cs" />
+    <Compile Include="WinfInserTextPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinfInserTextPlayer.Designer.cs">
+      <DependentUpon>WinfInserTextPlayer.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -132,6 +139,10 @@
     <Content Include="Images\PlayerMasc.png" />
     <Content Include="Songs\BG_Music.wav" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="WinfInserTextPlayer.resx">
+      <DependentUpon>WinfInserTextPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
