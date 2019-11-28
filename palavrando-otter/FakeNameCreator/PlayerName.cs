@@ -16,7 +16,6 @@ namespace Palavrando.FakeNameCreator
 
         public PlayerName(string name)
         {
-            Id = Guid.NewGuid(); // pode por so id recebido
 
             var pessoa0 = new Faker<PlayerName>("pt_BR")
                 .RuleFor(c => c.Id, f => Id)
@@ -24,6 +23,7 @@ namespace Palavrando.FakeNameCreator
                 .RuleFor(c => c.DataNascimento, f => f.Date.Past(15))
                 .Generate();
 
+            Id = Guid.NewGuid(); // pode por so id recebido
             Nome = Convert.ToString(pessoa0.Nome);
             DataNascimento = Convert.ToDateTime(pessoa0.DataNascimento);
         }
