@@ -102,6 +102,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Downloads\OtterUI-master\OtterUI\OtterUI.csproj">
+      <Project>{1ce69ad2-0a29-4150-a3f0-ba164a00df73}</Project>
+      <Name>OtterUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Otter\Otter.csproj">
       <Project>{236485c2-a7ba-4dcd-808a-b3a634764402}</Project>
       <Name>Otter</Name>

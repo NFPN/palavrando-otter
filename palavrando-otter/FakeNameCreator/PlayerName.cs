@@ -17,7 +17,7 @@ namespace Palavrando.FakeNameCreator
         public PlayerName(string name)
         {
             Id = Guid.NewGuid(); // pode por so id recebido
-            Nome = name;
+
             var pessoa0 = new Faker<PlayerName>("pt_BR")
                 .RuleFor(c => c.Id, f => Id)
                 .RuleFor(c => c.Nome, f => f.Name.FullName(Bogus.DataSets.Name.Gender.Female))

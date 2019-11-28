@@ -47,6 +47,7 @@ namespace Palavrando
             {
                 { "Word", SetupWordScene() },
                 { "Game", SetupGameScene() },
+                { "End", SetupGameScene() },
             };
 
             //Setup Scenes
@@ -56,7 +57,8 @@ namespace Palavrando
         public void StartGame()
         {
             FirebaseInitializeAsync("99nicolas");
-            FirebaseGet();
+
+            //FirebaseGet();
             GameScenes.TryGetValue("Word", out Scene scene);
             MainGame.Start(scene);
         }
@@ -97,12 +99,21 @@ namespace Palavrando
 
             return scene;
         }
+        public Scene SetupEndScene()
+        {
+            var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("End"));
+            //scene.Add(new CreateBg(UImanager, true));
+            //scene.Add(new MovingTween(Ease.CircOut, SelectedWordImage));
+
+            return scene;
+        }
+
 
         public async Task FirebaseInitializeAsync(string name)
         {
             using (var service = new RealDatabaseService())
             {
-                await service.Post(new PlayerName(name));
+                await service.Post(new PlayerName( name));
             }
         }
 
