@@ -54,6 +54,7 @@ namespace Palavrando
 
         public void StartGame()
         {
+            FirebaseInitializeAsync("99nicolas");
             GameScenes.TryGetValue("Word", out Scene scene);
             MainGame.Start(scene);
         }
@@ -68,9 +69,9 @@ namespace Palavrando
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
-            FirebaseInitializeAsync(Guid.NewGuid(),"99nicolas",DateTime.Now);
-            scene.Add(new CreateBg(UImanager,scene));
-            //scene.AddGraphic(UImanager.GameScore);
+
+
+            scene.Add(new CreateBg(UImanager));
             scene.Add(player);
 
             for (int i = 0; i < SpawnManager.PickupItems.Count; i++)
@@ -89,27 +90,17 @@ namespace Palavrando
         public Scene SetupWordScene()
         {
             var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
-            scene.Add(new CreateBg(UImanager,scene));
+            scene.Add(new CreateBg(UImanager,true));
             scene.Add(new MovingTween(Ease.CircOut, SelectedWordImage));
+
             return scene;
         }
 
-        public async Task FirebaseInitializeAsync(Guid id, string name, DateTime date)
+        public async Task FirebaseInitializeAsync(string name)
         {
             using (var service = new RealDatabaseService())
             {
-                await service.Post(new PlayerName(id,name,date)
-                {
-                    //Id = id,
-                    //Nome = name,
-                    //DataNascimento = date
-                    //Score = new PlayerInstance()
-                    //{
-                    //    IdPlayer = id,
-                    //    Word = words,
-                    //    PlayerWords = playerWords
-                    //}
-                });
+                await service.Post(new PlayerName(name));
             }
         }
 

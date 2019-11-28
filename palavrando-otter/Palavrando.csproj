@@ -119,11 +119,11 @@
     <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurar4.png" />
     <Content Include="Images\imgObjetoPalavra\FloretesProcurar\FloreteProcurar5.png" />
     <Content Include="Images\GatoDeBotasFim.png" />
-    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurarCorreto.jpg" />
     <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar2.png" />
     <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar3.png" />
     <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar4.png" />
     <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurar5.png" />
+    <Content Include="Images\imgObjetoPalavra\GatosProcurar\GatoProcurarCorreto.png" />
     <Content Include="Images\imgPalavra\Bota\Bota.png" />
     <Content Include="Images\imgPalavra\Chapeu\Chapeu.png" />
     <Content Include="Images\imgPalavra\Florete\Florete.png" />

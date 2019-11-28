@@ -39,7 +39,7 @@ namespace PalavrandoSetup.Services
             try
             {
                 var register = await FbaseClient
-                .Child("PlayerName")
+                .Child(player.ToString())
                 .PostAsync(player);
             }
             catch (Exception ex)
@@ -66,6 +66,7 @@ namespace PalavrandoSetup.Services
         public void Dispose()
         {
             //Dispose();
+            //GC.SuppressFinalize(this);
         }
     }
 }

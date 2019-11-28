@@ -9,19 +9,21 @@ namespace Palavrando.FakeNameCreator
 {
     public class PlayerName
     {
+
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
 
-        public PlayerName(Guid id, string name, DateTime time)
+        public PlayerName(string name)
         {
+            Id = Guid.NewGuid(); // pode por so id recebido
+
             var pessoa0 = new Faker<PlayerName>("pt_BR")
-                .RuleFor(c => c.Id, f => id)
+                .RuleFor(c => c.Id, f => Id)
                 .RuleFor(c => c.Nome, f => f.Name.FullName(Bogus.DataSets.Name.Gender.Female))
                 .RuleFor(c => c.DataNascimento, f => f.Date.Past(15))
                 .Generate();
 
-            Id = new Guid(pessoa0.Id.ToByteArray()); // pode por so id recebido
             Nome = Convert.ToString(pessoa0.Nome);
             DataNascimento = Convert.ToDateTime(pessoa0.DataNascimento);
         }
@@ -29,6 +31,11 @@ namespace Palavrando.FakeNameCreator
         public PlayerName()
         {
 
+        }
+
+        public override string ToString()
+        {
+            return "PlayerName";
         }
     }
 }
