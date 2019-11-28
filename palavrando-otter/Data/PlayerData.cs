@@ -7,5 +7,20 @@ namespace PalavrandoSetup.Data
         public string HashID { get; set; }
         public string Name { get; set; }
         public List<PlayerWords> Words { get; set; }
+
+        public PlayerData(string hashId, string name,List<PlayerWords> words)
+        {
+            HashID = hashId;
+            Name = name;
+
+            foreach (var word in words)
+            {
+                Words.Add(word);
+            }
+        }
+        public PlayerData()
+        {
+
+        }
     }
 }

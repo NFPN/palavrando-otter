@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using Palavrando.FakeNameCreator;
 using PalavrandoSetup.Data;
 using System;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace PalavrandoSetup.Services
             FbaseClient = new FirebaseClient("https://palavrando-otte2d.firebaseio.com/");
         }
 
-        public async Task<PlayerInstance> GET()
+        public async Task<PlayerWords> GET()
         {
             try
             {
@@ -23,9 +24,9 @@ namespace PalavrandoSetup.Services
                 .Child("PlayerData")
                 .OrderByKey()
                 .StartAt("search")
-                .OnceAsync<PlayerInstance>();
+                .OnceAsync<PlayerWords>();
 
-                return (register as PlayerInstance);
+                return (register as PlayerWords);
             }
             catch (Exception ex)
             {
@@ -33,17 +34,13 @@ namespace PalavrandoSetup.Services
             }
         }
 
-        public async Task Post(PlayerData player)
+        public async Task Post(PlayerName player)
         {
             try
             {
                 var register = await FbaseClient
-                .Child("PlayerData")
-                .PostAsync(player.Score);
-
-                var register2 = await FbaseClient
-                    .Child("PlayerInstance")
-                    .PostAsync(1);
+                .Child("PlayerName")
+                .PostAsync(player);
             }
             catch (Exception ex)
             {
@@ -68,7 +65,7 @@ namespace PalavrandoSetup.Services
 
         public void Dispose()
         {
-            Dispose();
+            //Dispose();
         }
     }
 }

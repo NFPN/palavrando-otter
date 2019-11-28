@@ -1,6 +1,7 @@
 ﻿using Otter;
 using Palavrando.Entities;
 using Palavrando.Extensions;
+using Palavrando.FakeNameCreator;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utilities;
@@ -67,9 +68,9 @@ namespace Palavrando
         {
             var scene = new CustomScene(/*BGM.wav,*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
             var player = new Player(MainGame, new MoveSystem(), new PlayerAnimation(), name: "Collector");
-            //FirebaseInitializeAsync(1,"nicolas","lindo","ana");
-            scene.Add(new CreateBg(UImanager));
-            scene.AddGraphic(UImanager.GameScore);
+            FirebaseInitializeAsync(Guid.NewGuid(),"99nicolas",DateTime.Now);
+            scene.Add(new CreateBg(UImanager,scene));
+            //scene.AddGraphic(UImanager.GameScore);
             scene.Add(player);
 
             for (int i = 0; i < SpawnManager.PickupItems.Count; i++)
@@ -88,25 +89,26 @@ namespace Palavrando
         public Scene SetupWordScene()
         {
             var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
-            scene.Add(new CreateBg(UImanager));
+            scene.Add(new CreateBg(UImanager,scene));
             scene.Add(new MovingTween(Ease.CircOut, SelectedWordImage));
             return scene;
         }
 
-        public async Task FirebaseInitializeAsync(int id, string name, string words, string playerWords)
+        public async Task FirebaseInitializeAsync(Guid id, string name, DateTime date)
         {
             using (var service = new RealDatabaseService())
             {
-                await service.Post(new PlayerData()
+                await service.Post(new PlayerName(id,name,date)
                 {
-                    Id = id,
-                    Name = name,
-                    Score = new PlayerInstance()
-                    {
-                        IdPlayer = id,
-                        Word = words,
-                        PlayerWords = playerWords
-                    }
+                    //Id = id,
+                    //Nome = name,
+                    //DataNascimento = date
+                    //Score = new PlayerInstance()
+                    //{
+                    //    IdPlayer = id,
+                    //    Word = words,
+                    //    PlayerWords = playerWords
+                    //}
                 });
             }
         }

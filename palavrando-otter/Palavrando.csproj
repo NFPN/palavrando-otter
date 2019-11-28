@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bogus, Version=28.4.1.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.28.4.1\lib\net40\Bogus.dll</HintPath>
+    </Reference>
     <Reference Include="Firebase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebaseDatabase.net.4.0.4\lib\netstandard2.0\Firebase.dll</HintPath>
     </Reference>
@@ -67,6 +70,7 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\PlayerAnimation.cs" />
     <Compile Include="Extensions\GameExtensions.cs" />
+    <Compile Include="FakeNameCreator\PlayerName.cs" />
     <Compile Include="Interfaces\IAnimatePlayer.cs" />
     <Compile Include="Interfaces\ISwitchScene.cs" />
     <Compile Include="Systems\MoveSystem.cs" />
