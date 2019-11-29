@@ -5,7 +5,7 @@ namespace Palavrando.Managers
 {
     public class UIManager
     {
-        public List<Text> DebugTexts { get; private set; }
+        public RichText DebugTexts { get; private set; }
         public RichText GameScore { get; private set; }
         public RichText Message { get; private set; }
 
@@ -14,7 +14,7 @@ namespace Palavrando.Managers
         {
             GameScore = ScoreSetup("Score: 0");
             Message = MessageToPlayer("Aperte Qualquer Tecla");
-            //DebugTexts = Debug();
+            DebugTexts = Debug("Insira a sua História com as palavras \n conhecidas Hoje");
         }
 
         //Text Configuration
@@ -63,9 +63,10 @@ namespace Palavrando.Managers
 
             return new RichText(scoreText, scoreConfig)
             {
-                X = Game.Instance.HalfWidth - (scoreText.Length * 7),
-                Y = Game.Instance.WindowHeight - (scoreText.Length * 5),
+                X = 10,
+                Y = 50,
                 TextAlign = TextAlign.Center,
+                TextWidth = Game.Instance.WindowWidth,
             };
         }
 

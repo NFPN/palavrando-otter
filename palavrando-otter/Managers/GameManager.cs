@@ -104,8 +104,18 @@ namespace Palavrando
         {
             var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"), name: "End");
             //scene.Add(new CreateBg(UImanager, true));
+            Image spritemap = new Image(PathFolder.GetDirectory() + @"\Images\bg-room2.png");
 
-            
+            spritemap.ScaleY = 1.3f;
+            spritemap.ScaleX = 1.3f;
+
+            //spritemap.CenterOrigin();
+            spritemap.CenterOrigin();
+
+            // Add the graphic to the Entity so that it renders.
+            scene.AddGraphic(spritemap, Game.Instance.HalfWidth - 40, Game.Instance.HalfHeight - 2);
+            scene.AddGraphic(UImanager.DebugTexts);
+
             GuiManager testGui;
             GuiTextBox textbox;
             GuiButton normbutton;
@@ -113,12 +123,12 @@ namespace Palavrando
             Surface guiSurface = new Surface(scene.Width, scene.Height);
 
             testGui = new GuiManager(MainGame, guiSurface) { Layer = -10 };
-            textbox = new GuiTextBox(200, 10, 400, 50, 36) { MaxCharacters = 18, };
-            textbox.SetText("text box");
+            textbox = new GuiTextBox(10, 400, 800, 100, 36) { MaxCharacters = 255, };
+            textbox.SetText("");
             testGui.AddWidget(textbox);
 
-            normbutton = new GuiButton(10, 540, 400, 50);
-            normbutton.SetText("Click Me!", "", 40);
+            normbutton = new GuiButton(10, 540, 800, 50);
+            normbutton.SetText("Inserir Texto!", "", 40);
             normbutton.OnClickEvent += new EventHandler(normbutton_OnClickEvent);
             testGui.AddWidget(normbutton);
 

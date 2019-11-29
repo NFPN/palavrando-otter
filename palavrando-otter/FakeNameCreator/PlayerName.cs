@@ -17,15 +17,15 @@ namespace Palavrando.FakeNameCreator
         public PlayerName(string name)
         {
 
-            var pessoa0 = new Faker<PlayerName>("pt_BR")
-                .RuleFor(c => c.Id, f => Id)
-                .RuleFor(c => c.Nome, f => f.Name.FullName(Bogus.DataSets.Name.Gender.Female))
-                .RuleFor(c => c.DataNascimento, f => f.Date.Past(15))
-                .Generate();
+            //var pessoa0 = new Faker<PlayerName>("pt_BR")
+            //    .RuleFor(c => c.Id, f => Id)
+            //    .RuleFor(c => c.Nome, f => f.Name.FullName(Bogus.DataSets.Name.Gender.Female))
+            //    .RuleFor(c => c.DataNascimento, f => f.Date.Past(15))
+            //    .Generate();
 
             Id = Guid.NewGuid(); // pode por so id recebido
-            Nome = Convert.ToString(pessoa0.Nome);
-            DataNascimento = Convert.ToDateTime(pessoa0.DataNascimento);
+            Nome = Convert.ToString(name);
+            DataNascimento = Convert.ToDateTime(DateTime.Now);
         }
 
         /*public PlayerName()
