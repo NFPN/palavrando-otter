@@ -30,7 +30,10 @@ namespace Palavrando.Utilities
         public override void Update()
         {
             if (Input.KeyPressed(Key.Space) && Game.Instance != null)
+            {
+                Game.Instance.MouseVisible = false;
                 Switch();
+            }
 
             base.Update();
         }

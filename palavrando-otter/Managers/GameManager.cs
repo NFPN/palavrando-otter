@@ -6,13 +6,11 @@ using Palavrando.FakeNameCreator;
 using Palavrando.Managers;
 using Palavrando.Systems;
 using Palavrando.Utilities;
-using PalavrandoSetup.Data;
 using PalavrandoSetup.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Palavrando
 {
@@ -96,43 +94,63 @@ namespace Palavrando
         public Scene SetupWordScene()
         {
             var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Game"));
-            scene.Add(new CreateBg(UImanager,true));
+            scene.Add(new CreateBg(UImanager, true));
             scene.Add(new MovingTween(Ease.CircOut, SelectedWordImage));
-             
+
             return scene;
         }
+
         public Scene SetupEndScene()
         {
-            var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"));
+            var scene = new CustomScene(/*"BG_Music.wav",*/ sceneSwitcher: SceneSwitcher.CreateWithDefault("Word"), name: "End");
             //scene.Add(new CreateBg(UImanager, true));
 
+            
             GuiManager testGui;
             GuiTextBox textbox;
             GuiButton normbutton;
+            Surface gameSurface = new Surface(scene.Width, scene.Height);
             Surface guiSurface = new Surface(scene.Width, scene.Height);
 
-            testGui = new GuiManager(MainGame,guiSurface);
-            testGui.Layer = -10;
-            textbox = new GuiTextBox(200, 10, 400, 50, 36);
-            textbox.MaxCharacters = 18;
+            testGui = new GuiManager(MainGame, guiSurface) { Layer = -10 };
+            textbox = new GuiTextBox(200, 10, 400, 50, 36) { MaxCharacters = 18, };
             textbox.SetText("text box");
             testGui.AddWidget(textbox);
 
             normbutton = new GuiButton(10, 540, 400, 50);
             normbutton.SetText("Click Me!", "", 40);
-            //normbutton.OnClickEvent += new EventHandler(normbutton_OnClickEvent);
+            normbutton.OnClickEvent += new EventHandler(normbutton_OnClickEvent);
             testGui.AddWidget(normbutton);
 
             scene.Add(testGui);
+
+            scene.OnRender += new Action(render);
+
+            void render()
+            {
+                if (!MainGame.MouseVisible)
+                    MainGame.MouseVisible = true;
+
+                gameSurface.Render();
+                guiSurface.Render();
+            }
+
+            void normbutton_OnClickEvent(object sender, EventArgs e)
+            {
+                if (textbox.GetText() == "")
+                    normbutton.SetText("No text entered!", "", 40);
+                else
+                    normbutton.SetText(textbox.GetText(), "", 40);
+            }
+
             return scene;
         }
-
 
         public async Task FirebaseInitializeAsync(string name)
         {
             using (var service = new RealDatabaseService())
             {
-                await service.Post(new PlayerName( name));
+                await service.Post(new PlayerName(name));
             }
         }
 
